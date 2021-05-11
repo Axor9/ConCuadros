@@ -1,0 +1,11 @@
+<div class="container">
+    {{#each products}}
+            <div class="product-container">
+                    <p>{{name}}</p>
+            </div>
+        {{else}}
+            <div class="product-container">
+                    <p>No hay productos disponibles</p>
+            </div>
+        {{/each}}
+</div>
