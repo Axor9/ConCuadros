@@ -34,6 +34,7 @@ app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
 app.use('/shop',require('./routes/shop'));
 app.use('/account',require('./routes/account'));
+app.use('/cart',require('./routes/cart'));
 
 // Public
 app.use(express.static(path.join(__dirname,'public')));

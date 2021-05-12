@@ -32,4 +32,10 @@ router.post('/add',async (req,res) =>{
     res.redirect('/shop');
 });
 
+router.get('/product/:id',async(req,res) =>{
+    const { id_products } = req.params;
+    const products = await pool.query('SELECT * FROM products WHERE id_products = ?',[id_products]);
+    res.render('shop/product',{products});
+});
+
 module.exports = router;

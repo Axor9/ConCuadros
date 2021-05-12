@@ -1,7 +1,10 @@
 <div class="container">
     {{#each products}}
             <div class="product-container">
-                    <p>{{name}}</p>
+                    <a href="/shop/product/{{id_products}}" class="product-link">
+                        <p>{{name}}</p>
+                    </a>
+                    
             </div>
         {{else}}
             <div class="product-container">
