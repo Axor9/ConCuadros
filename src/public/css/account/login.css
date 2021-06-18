@@ -1,1 +1,95 @@
 @import url(../navigation.css);
+@import url(../footer.css);
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-login{
+    padding: 50px;
+}
+
+.login-div{
+    margin: auto;
+    width: 50%;
+    padding: 50px;
+    border: #3D3D3D;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.login-div h1{
+    text-align: center;
+    margin: 20px;
+    font-size: 36;
+    color: #3D3D3D;
+}
+
+.buttons-top-session{
+    display:flex;
+    align-items:Center;
+}
+
+.Sesion_button_reg{
+    width: 50%;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    color:#ffffff;
+    background-color:#ECC8C1;
+    border-color: #ECC8C1;
+    border-width: 3px;
+    border-style: solid;
+}
+.Sesion_button_log{
+    width: 50%;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    color:#ffffff;
+    background-color:#B41901;
+    border-color: #B41901;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.form-group input{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.form-group button{
+    width: 100%;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 30px;
+    padding: 5px;
+    color:#ffffff;
+    background-color:#B41901;
+    border-color: #B41901;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.form-group-a{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-align: end;
+}
+
+.form-group-a a{
+    font-size: 100%;
+    text-decoration:none;
+    
+}
+
+.form-group-a a:link,.form-group-a a:visited,.form-group-a a:active {
+    text-decoration:none;
+    color: #3D3D3D;
+}

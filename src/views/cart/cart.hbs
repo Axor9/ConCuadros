@@ -1,0 +1,33 @@
+<div class="container-cart-page">
+    <div class="cart-page-div">
+        <h1>Carro de la compra</h1>
+        {{#each products_cart}}
+            <div class="found-cart">
+                <div class="found-cart-image">
+                    <img src="../../images/upload/{{image_p}}" alt="{{name}}">
+                </div>
+                <div class="found-cart-name">
+                    <h2>{{name}}</h2>
+                    <p>{{price}} €</p>
+                    <p> {{size}}</p>
+                </div>
+                <div class="found-cart-quantity">
+                    <input type="number" name="quantity" value="1" >
+                </div>
+                <div class="found-cart-delete">
+                    <button>
+                        Delete
+                    </button>
+                </div>
+            </div>
+            {{else}}
+                <div class="not-found-cart">
+                    <h3>Su carrito está vacío</h3>
+                    <button class="go-to-shop" onclick="location='shop'"> 
+                        Continuar Comprando
+                    </button>
+                </div>     
+        {{/each}}
+
+    </div>
+</div>

@@ -1,14 +1,53 @@
-<div class="container">
-    {{#each products}}
-            <div class="product-container">
-                    <a href="/shop/product/{{id_products}}" class="product-link">
-                        <p>{{name}}</p>
-                    </a>
-                    
-            </div>
-        {{else}}
-            <div class="product-container">
-                    <p>No hay productos disponibles</p>
-            </div>
-        {{/each}}
+<script src="/scripts/shop-script.js"></script>
+
+<div class="container-shop">
+    <div class="title-shop">
+        <h1>Productos</h1>
+    </div>
+    <div class="navbar-filters">
+        <div class="dropdown">
+        <button class="dropbtn" onclick="myFunction()">Filter By
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+        </div> 
+
+        <div class="dropdown">
+        <button class="dropbtn" onclick="orderby()">Order By
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown2">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+        </div> 
+    </div>
+    <div class="product-div">
+        <div class="product-div-in">
+            {{#each products}}
+                    <div class="card">
+                            <a href="/shop/product/{{id_products}}" class="product-link">
+                                <img src="../../images/upload/{{image_p}}" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h3>{{name}}</h3>
+                                <p>{{price}} €</p>
+                                
+                                <h3>Tallas</h3>
+                                <button class="add-to-cart-button">Añadir</button>
+                            </div>
+                                            
+                    </div>
+                {{else}}
+                    <div class="product-container">
+                            <p>No hay productos disponibles</p>
+                    </div>
+            {{/each}}
+        </div>
+    </div>
 </div>

@@ -1,0 +1,1 @@
+exports.sub2 = 'lib2.js';

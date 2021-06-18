@@ -1,0 +1,56 @@
+<script src="/scripts/product.js"></script>
+
+<div class="container-product">
+    <div class="product-div">
+        <div class="images-product-div">
+            <div class="found-image-container">
+                {{#each images}}
+                        
+                            <img src="../../images/upload/{{image}}" onclick="cambiarImagen(this)">
+                {{else}}
+                        <div class="not-found-container">
+                                <p>No hay productos disponibles</p>
+                        </div>
+                {{/each}}
+                       
+            </div>
+             <div class="central-image">
+                <img src="../../images/upload/{{main_img}}" id="main-image">
+            </div>
+        </div>
+        <div class="info-product-div">
+            {{#each products}}
+                <form action="/shop/product/{{id_products}}" method="POST">
+                    <h2>{{name}}</h2>
+                    <p>{{price}} €</p>
+                    <div class="quantity-product">
+                        <h4>Cantidad</h4>
+                        <input type="number" name="quantity" value="1" >
+                    </div>
+                    <div class="size-product">
+                        <h4>Tallas</h4>
+                        <input type="button" name="boton_selected" value="XS" id="boton-selected" onclick="cambiarboton(this)">
+                        <input type="button" name="boton_no_selected" value="S" id="boton-no-selected" onclick="cambiarboton(this)">
+                        <input type="button" name="boton_no_selected" value="M" id="boton-no-selected" onclick="cambiarboton(this)">
+                        <input type="button" name="boton_no_selected" value="XL" id="boton-no-selected" onclick="cambiarboton(this)">
+                        <input type="button" name="boton_no_selected" value="XXL" id="boton-no-selected" onclick="cambiarboton(this)">
+                        <input type="hidden" name="size" id="size" value="XS">
+                    </div>
+                    <div class="buttons-product">
+                        <div class="button-group">
+                            <input type="submit" value="AÑADIR AL CARRITO" class="add_to_cart_button">
+                        </div>
+                        <div class="button-group">
+                            <button class="buy_now_button"> 
+                                COMPRAR AHORA
+                            </button>
+                        </div>    
+                    </div>
+                    <div class="description-div">
+                        <p>{{description}}</p>
+                    </div>
+                </form>
+            {{/each}}
+        </div>
+    </div>
+</div>

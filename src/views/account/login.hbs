@@ -1,25 +1,29 @@
-<div class="container">
-    <form action="/" method="POST">
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email" autofocus>
+<div class="container-login">
+    <div class="login-div">
+        <div class="buttons-top-session">
+                <button class="Sesion_button_reg" onclick="location='register'"> 
+                    Crear Cuenta
+                </button>
+                <button class="Sesion_button_log"> 
+                    Inciar Sesion
+                </button>
         </div>
-        <div class="form-group">
-            <input type="password" name="password" placeholder="Contraseña">
-        </div>
-        <div class="fomr-group">
-            <p>
+        <h1>BIENVENIDO!</h1>
+        <form action="login" method="POST">
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" autofocus>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Contraseña">
+            </div>
+            <div class="form-group-a">
                 <a href="">¿Olvidaste tu contraseña?</a>
-            </p>
-        </div>
-        <div class="form-group">
-            <button class="Sesion_button"> 
-                Inciar Sesion
-            </button>
-        </div>
-        <div class="fomr-group">
-            <p>
-                <a href="/account/register">Crear Cuenta</a>
-            </p>
-        </div>
-    </form>
+            </div>
+            <div class="form-group">
+                <button class="Sesion_button"> 
+                    Inciar Sesion
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -1,21 +1,29 @@
-<div class="container">
-    <form action="/" method="POST">
-        <div class="form-group">
-            <input type="name" name="name" placeholder="Nombre" autofocus>
+<div class="container-register">
+    <div class="register-div">
+        <div class="buttons-top-session">
+                    <button class="Sesion_button_reg"> 
+                        Crear Cuenta
+                    </button>
+                    <button class="Sesion_button_log" onclick="location='login'"> 
+                        Inciar Sesion
+                    </button>
         </div>
-        <div class="form-group">
-            <input type="surname" name="surname" placeholder="Apellidos">
-        </div>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <input type="password" name="password" placeholder="Contraseña">
-        </div>
-        <div class="form-group">
-            <button class="Sesion_button"> 
-                Crear Cuenta
-            </button>
-        </div>
-    </form>
+        <form action="register" method="POST">
+            <div class="form-group-n">
+                <input type="text" name="name" placeholder="Nombre" autofocus>
+                <input type="text" name="surname" placeholder="Apellidos">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Contraseña">
+            </div>
+            <div class="form-group">
+                <button class="Sesion_button"> 
+                    Registrate
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

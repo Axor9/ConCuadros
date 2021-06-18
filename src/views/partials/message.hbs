@@ -1,0 +1,56 @@
+{{#if message}}
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{success}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{#if cart}}
+    {{#each products}}
+        <div class="alert cart-message">
+            <div class="header-cart-message ">
+                <h2>Producto Añadido</h2>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>          
+            </div>
+            <div class="content-cart-message">
+                <div class="img-content-cart-message">
+                    <img src="../../images/upload/{{image_p}}" alt="{{name}}">
+                    <div class="text-content-cart-message">
+                        <h2>{{name}}</h2>
+                        <p>{{price}} €</p>
+                    </div>
+                </div>
+                <div class="buttons-content-cart-message">
+                    <button class="go-to-cart" onclick="location='../../cart'"> 
+                        Ver Carrito
+                    </button>
+                    <a href="" class="continue-button-cart">Continuar Comprando</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+{{/if}}

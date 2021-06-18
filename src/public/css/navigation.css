@@ -2,16 +2,17 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
 }
   
 .top-bar{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
+    padding: 10px 40px;
+    border-bottom-color: #b4b4b4;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
   
 .main-navbar{
@@ -34,5 +35,34 @@
 }
 
 .button-site{
-    margin: 0px 5px;
+    margin: 0px 10px;
+}
+
+.main-navbar{
+    margin: auto;
+    padding-left: 100px;
+}
+
+.main-navbar a{
+    text-decoration: none;
+    color: #3D3D3D;
+    font-size: 25px;
+    
+}
+
+.main-navbar a:link,.main-navbar a:visited,.main-navbar a:active {
+    text-decoration:none;
+    color: #3D3D3D;
+}
+
+.main-navbar a:hover {
+    color: #3D3D3D;
+    border-bottom: #3D3D3D;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+#cart{
+    width: 110%;
+    height: 110%;
 }

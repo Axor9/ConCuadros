@@ -4,6 +4,6 @@ module.exports = {
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'database_concuadros'
+        database: 'concuadros_db'
     }
 }
