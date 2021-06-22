@@ -6,7 +6,6 @@
 }
 
 h1{
-    margin-top: 30px;
     text-align: center;
 }
 
@@ -32,4 +31,89 @@ h1{
     border-color: #B41901;
     border-width: 3px;
     border-style: solid;
+}
+
+.found-cart{
+    padding: 0px 100px;
+    padding-top: 20px;
+}
+
+.found-cart-content{
+    border-top-color: #707070;
+    border-top-width: 2px;
+    border-top-style: solid;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 50px;
+}
+
+.found-cart-image img{
+    width: 60%;
+}
+
+.found-cart-name{
+    margin: auto;
+    width: 40%;
+    margin-left: -20px;
+
+}
+
+.found-cart-quantity{
+    margin: auto;
+}
+
+.found-cart-quantity input{
+    width: 40%;
+}
+
+.found-cart-delete{
+    margin: auto;
+}
+
+.found-cart-delete button{
+    background-color: transparent ;
+    border-color: transparent;
+}
+
+.total-price-cart-div{
+    padding: 0px 100px;
+    padding-top: 20px;
+}
+
+h4{
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.found-cart-content-subtotal{
+    text-align: end;
+}
+
+.found-cart-content-subtotal-button{
+    padding: 50px 0px;
+}
+
+.found-cart-content-subtotal-button button{
+    margin: auto;
+    width: 25%;
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    color:#ffffff;
+    background-color:#B41901;
+    border-color: #B41901;
+    border-width: 3px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.delete_button{
+    background-image: url("../images/icons/bin.png");
+    background-repeat: no-repeat;
+    background-color: transparent; 
+    border: transparent;
+    cursor: pointer;
+    height: 45px;
+    width: 75px;
 }

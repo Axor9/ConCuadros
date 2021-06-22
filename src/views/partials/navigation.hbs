@@ -14,15 +14,21 @@
             <a href="../../pages/contact" id="contact-botton">Contact</a>
         </nav>
         <div class="top-bar-buttons">
-            <div class="button-site">
+            <!--<div class="button-site">
                 <button type="button">
                     <img src="../../images/icons/loupe.png">
-            </button>
-        </div>
+                </button>
+            </div>-->
         <div class="button-site">
-            <a href="../../account">
-                <img src="../../images/icons/user.png">
-            </a>
+            {{#if user}}
+                <a href="../../account/logout">
+                    <img src="../../images/icons/logout.png">
+                </a>
+            {{else}}
+                <a href="../../account">
+                    <img src="../../images/icons/user.png">
+                </a>
+            {{/if}}
         </div>
         <div class="button-site">
             <a href="../../cart">

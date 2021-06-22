@@ -1,0 +1,83 @@
+<script src="/scripts/shop.js"></script>
+
+<div class="index-container">
+    <div class="index-div">
+        <div class="index-main-image">
+            <div class="index-main-image-info">
+                <h1>ConCuadros</h1>
+                <p>Camisas con cuadros antimanchas</p>
+                <button onclick="location='shop'">
+                    Comprar Ahora
+                </button>
+            </div>
+        </div>
+        <div class="index-main-text1">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec est purus. 
+                Integer sagittis id mi eu sodales orem ipsum dolor sit amet, consectetur adipiscing elit unc nec est purus
+                nteger sagittis id mi eu sodales.
+            </p>
+        </div>
+        <div class="index-main-collection">
+            <h2>COLECCIONES</h2>
+            <div class="images-collection-index">
+                <a href="/shop?filter=1&order=1">
+                    <img src="../../images/collection-man.jpg" alt="Coleccion para hombres">
+                </a>
+                <a href="/shop?filter=2&order=1">
+                    <img src="../../images/collection-woman.jpg" alt="Coleccion para mujeres">
+                </a>
+            </div>
+        </div>
+        <div class="index-main-about">
+            <div class="index-main-about-container">
+                <div class="index-main-about-container-image">
+                    <img src="../../images/main_about.jpg" alt="cuello de camisa con cuadros blanca">
+                </div>
+                <div class="index-main-about-container-text">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec est purus. 
+                    Integer sagittis id mi eu sodales.Lorem ipsum dolor sit amet, 
+                    consectetur adipiscing elit. Nunc nec est purus. Integer sagittis id mi eu sodales
+                    </p>
+                    <button onclick="location='pages/about'">
+                        Descubrenos
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="index-main-products">
+            <h2>Productos Destacados</h2>
+            <div class="featured-products"> 
+                {{#each products}}
+                    <div class="card">
+                        <a href="/shop/product/{{id_products}}" class="product-link">
+                            <img src="../../images/upload/{{image_p}}" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <form action="/insert/{{id_products}}" method="POST">
+                                <h3 title="{{name}}">{{name}}</h3>
+                                <p>{{price}} €</p>                
+                                <div class="size-product">
+                                    <h4>Tallas</h4>
+                                    <input type="button" name="{{id_products}}" value="XS" class="boton-selected-{{id_products}}" id="boton-selected" onclick="cambiarboton(this)">
+                                    <input type="button" name="{{id_products}}" value="S" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                    <input type="button" name="{{id_products}}" value="M" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                    <input type="button" name="{{id_products}}" value="XL" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                    <input type="button" name="{{id_products}}" value="XXL" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                    <input type="hidden" name="size" class="size" id='size-{{id_products}}' value="XS">
+                                </div>
+                                <button class="add-to-cart-button">Añadir</button>
+                            </form>
+                        </div>                  
+                    </div>
+                {{else}}
+                    <div class="product-container">
+                        <p>No hay productos disponibles</p>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

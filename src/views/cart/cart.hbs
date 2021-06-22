@@ -1,33 +1,65 @@
-<div class="container-cart-page">
-    <div class="cart-page-div">
-        <h1>Carro de la compra</h1>
-        {{#each products_cart}}
-            <div class="found-cart">
-                <div class="found-cart-image">
-                    <img src="../../images/upload/{{image_p}}" alt="{{name}}">
+{{#if user}}
+    <div class="container-cart-page" >
+        <div class="cart-page-div">
+            
+            <h1>Carro de la compra</h1>
+            {{#each products_cart}}
+                <div class="found-cart">
+                    <div class="found-cart-content">
+                        <div class="found-cart-image">
+                            <img src="../../images/upload/{{image_p}}" alt="{{name}}">
+                        </div>
+                        <div class="found-cart-name">
+                            <h2>{{name}}</h2>
+                            <p> {{price}} €</p>
+                            <p> {{size}}</p>
+                        </div>
+                        <div class="found-cart-quantity">
+                            <input type="number" name="quantity" value="{{quantity}}" >
+                        </div>
+                        <div class="found-cart-delete">
+                            <form action="/cart/delete" method="POST">
+                                <input type="hidden" name="hidden" value="{{id_products}}">
+                                <input type="submit" class="delete_button" value="">
+                            </form>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="found-cart-name">
-                    <h2>{{name}}</h2>
-                    <p>{{price}} €</p>
-                    <p> {{size}}</p>
+                {{else}}
+                    <div class="not-found-cart">
+                        <h3>Su carrito está vacío</h3>
+                        <button class="go-to-shop" onclick="location='shop'"> 
+                            Continuar Comprando
+                        </button>
+                    </div>     
+            {{/each}}
+            {{#if products_cart}}
+                <div class="total-price-cart-div">
+                    <div class="found-cart-content-subtotal">
+                        <div class="found-cart-content-subtotal-text">
+                            <h4>Subtotal :</h4>
+                            <h4>{{total_price}} €</h4>
+                        </div>
+                        <div class="found-cart-content-subtotal-button">
+                            <button onclick="location='cart/order'">
+                            Terminar Pedido
+                            </button>
+                        </div>
+                        
+                    </div>
                 </div>
-                <div class="found-cart-quantity">
-                    <input type="number" name="quantity" value="1" >
-                </div>
-                <div class="found-cart-delete">
-                    <button>
-                        Delete
-                    </button>
-                </div>
-            </div>
-            {{else}}
-                <div class="not-found-cart">
-                    <h3>Su carrito está vacío</h3>
-                    <button class="go-to-shop" onclick="location='shop'"> 
-                        Continuar Comprando
-                    </button>
-                </div>     
-        {{/each}}
-
+                    
+            {{/if}} 
+        </div>
     </div>
-</div>
+{{else}}
+    <div class="no-login-cart">
+        <div class="not-found-cart">
+            <h3>Inicie sesión para acceder a su carrito</h3>
+                <button class="go-to-shop" onclick="location='account/login'"> 
+                    Iniciar Sesión
+                </button>
+        </div>
+    </div>
+{{/if}}

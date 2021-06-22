@@ -26,6 +26,27 @@ app.engine('.hbs',exphbs({
 }));
 app.set('view engine','.hbs');
 
+var hbs = exphbs.create({});
+
+hbs.handlebars.registerHelper('switch', function(value, options) {
+  this.switch_value = value;
+  this.switch_break = false;
+  return options.fn(this);
+});
+
+hbs.handlebars.registerHelper('case', function(value, options) {
+  if (value == this.switch_value) {
+    this.switch_break = true;
+    return options.fn(this);
+  }
+});
+
+hbs.handlebars.registerHelper('default', function(value, options) {
+   if (this.switch_break == false) {
+     return value;
+   }
+});
+
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));

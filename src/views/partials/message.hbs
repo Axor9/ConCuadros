@@ -28,7 +28,7 @@
 </div>
 {{/if}}
 {{#if cart}}
-    {{#each products}}
+    {{#each cart}}
         <div class="alert cart-message">
             <div class="header-cart-message ">
                 <h2>Producto Añadido</h2>
@@ -52,5 +52,7 @@
                 </div>
             </div>
         </div>
+        {{else}}
+            No va
     {{/each}}
 {{/if}}

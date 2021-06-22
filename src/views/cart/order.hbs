@@ -1,0 +1,71 @@
+<div class="order-container">
+    <div class="order-div">
+        <div class="order-div-info">
+            <div class="order-logo">
+                <a href="/" class="site-header-logo-image">
+                <img src="../../images/logo.png">
+                </a>
+                <h1>ConCuadros</h1>
+            </div>
+            <div class="order-title">
+                <h2>Datos de envio</h2>
+            </div>
+            <div class="order-div-form">
+                <form >
+                    <div class="order-user-name">
+                        <input type="text" name="nombre" placeholder="Nombre" autofocus required=required>
+                        <input type="text" name="apellidos" placeholder="Apellidos" required=required>
+                    </div>
+                    <div class="order-user-email">
+                        <input type="email" name="email" placeholder="Email" required=required>
+                    </div>
+                    <div class="order-user-more-info">
+                        <input type="text" name="postal" placeholder="Código Postal"  required=required>
+                        <input type="text" name="city" placeholder="Ciudad" required=required>
+                        <input type="text" name="province" placeholder="Provincia"  required=required>
+                    </div>
+                    <div class="order-user-country">
+                        <input type="text" name="country" placeholder="País/Región"  required=required>
+                    </div>
+                    <div class="order-user-phone">
+                        <input type="text" name="phone" placeholder="Teléfono"  required=required>
+                    </div>
+                    <div class="order-buttons">
+                        <button>
+                            Continuar
+                        </button>
+                        <a href="/cart">
+                            Volver al carrito
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="order-div-cart">
+            {{#each products_cart}}
+                <div class="order-products">
+                    <div class="found-cart-content">
+                        <div class="found-cart-image">
+                        <img src="../../images/upload/{{image_p}}" alt="{{name}}">
+                    </div>
+                        <div class="found-cart-name">
+                            <h2>{{name}}</h2>
+                            <p> {{price}} €</p>
+                            <p> {{size}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each }}
+            <div class="order-discount">
+                <input type="text" name="discount" placeholder="Código de Descuento">
+                <button>
+                    Usar
+                </button>
+            </div>
+            <div class="order-total-price">
+                <h4>Subtotal :</h4>
+                <h4>{{total_price}} €</h4>
+            </div>
+        </div>
+    </div>
+</div>

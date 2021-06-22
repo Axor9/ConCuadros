@@ -8,14 +8,90 @@ const pool = require('../database');
 
 
 router.get('/',async (req,res) =>{
-    const products = await pool.query('SELECT * FROM products');
+    const { filter,order } = req.query;
+    var products = [];
 
-    console.log(products);
+    if(filter == "all" || filter == undefined){
+        switch(order){
+            case '1':
+                products = await pool.query('SELECT * FROM products order by name');
+                break;
+            case '2':
+                products = await pool.query('SELECT * FROM products order by name desc');
+                break;
+            case '3':
+                products = await pool.query('SELECT * FROM products order by price');
+                break;
+            case '4':
+                products = await pool.query('SELECT * FROM products order by price desc');
+                break;
+            default :
+                products = await pool.query('SELECT * FROM products order by name');
+                break;
+
+        }
+    }else{
+        switch(order){
+            case '1':
+                products = await pool.query('SELECT * FROM products where id_categories = ? order by name',[filter]);
+                break;
+            case '2':
+                products = await pool.query('SELECT * FROM products where id_categories = ? order by name desc',[filter]);
+                break;
+            case '3':
+                products = await pool.query('SELECT * FROM products where id_categories = ? order by price',[filter]);
+                break;
+            case '4':
+                products = await pool.query('SELECT * FROM products where id_categories = ? order by price desc',[filter]);
+                break;
+        }
+    }
+    
+    
+    const categories = await pool.query('SELECT * FROM categories order by name');
+
 
     res.render('shop/shop',{
-        style : 'shop.css',
-        products : products
+        style : 'shop/shop.css',
+        products,
+        categories,
+        order,
+        filter
     });
+});
+
+
+router.post('/insert/:id',async (req,res) =>{
+    if(req.user){
+        const { id } = req.params;
+        const id_products = id;
+        const id_user = req.user.id;
+        const { size } = req.body;
+
+        const id_sizes_query = await pool.query('SELECT id_sizes FROM sizes WHERE name = ?',[size]);
+        const id_sizes = id_sizes_query[0].id_sizes;
+        const quantity = 1;
+
+        const newProductCart = {
+            id_products,
+            id_user,
+            id_sizes,
+            quantity
+        }
+
+        await pool.query('INSERT INTO cart set ?',[newProductCart]);
+
+        const productCart = await pool.query('SELECT * FROM products WHERE id_products = ?',[id_products]);
+        console.log(productCart);
+        req.flash('cart',productCart);
+        res.redirect('/shop');
+
+    }else{
+        const { id } = req.params;
+        req.flash('message','Inicie sesión para añadir al carrito');
+        res.redirect('/shop');
+    }
+    
 });
 
 
@@ -27,7 +103,7 @@ router.post('/add',async (req,res) =>{
     var created = new Date();
     var {originalname} = req.files[0];
     image_p = originalname;
-    const { name, price,description,id_categories,id_sizes} = req.body;
+    const { name, price,description,id_categories} = req.body;
     const newProduct = {
         name,
         price,
@@ -71,7 +147,7 @@ router.get('/product/:id',async(req,res) =>{
         products,
         images,
         main_img,
-        style : 'product.css'
+        style : '/shop/product.css'
     });
 });
 
@@ -84,22 +160,23 @@ router.post('/product/:id',async(req,res) =>{
 
         const id_sizes_query = await pool.query('SELECT id_sizes FROM sizes WHERE name = ?',[size]);
         const id_sizes = id_sizes_query[0].id_sizes;
-        for(i = 0;i<quantity;i++){
-            var newProductCart = {
-                id_products,
-                id_user,
-                id_sizes
-            }
-            await pool.query('INSERT INTO cart set ?',[newProductCart]);
-
+        var newProductCart = {
+            id_products,
+            id_user,
+            id_sizes,
+            quantity
         }
+        await pool.query('INSERT INTO cart set ?',[newProductCart]);
+
         const products = await pool.query('SELECT * FROM products WHERE id_products = ?',[id_products]);
         const { name,price,image } = products;
-        req.flash('cart',"name");
+        req.flash('cart',products);
         res.redirect('/shop/product/' + id);
 
     }else{
-
+        const { id } = req.params;
+        req.flash('message','Inicie sesión para añadir al carrito');
+        res.redirect('/shop/product/' + id);
     }
 });
 

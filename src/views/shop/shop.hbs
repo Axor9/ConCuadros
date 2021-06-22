@@ -1,53 +1,118 @@
-<script src="/scripts/shop-script.js"></script>
+<script src="/scripts/shop.js"></script>
 
 <div class="container-shop">
     <div class="title-shop">
         <h1>Productos</h1>
     </div>
-    <div class="navbar-filters">
-        <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction()">Filter By
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
-        </div> 
+    <form class="form-filters" action="/shop" method="GET">
+        <div class="navbar-filters">
+                <div class="filter-by-filters">
+                    <div class="filter-text">
+                        <h4>Filtrar Por</h4>
+                    </div>
+                    
+                    <select id="filter-select" name="filter" onchange="this.form.submit()">
+                        
+                        {{#if filter}}
+                            {{#switch filter}} 
+                                {{#case 1}}
+                                    <option value="all" >Todos</option>
+                                    <option id="Inviero" value="1" selected>Hombre</option>
+                                    <option id="Verano" value="2" >Mujer</option>
+                                {{/case}} 
+                                {{#case 2}}
+                                    <option value="all" >Todos</option>
+                                    <option id="Inviero" value="1" >Hombre</option>
+                                    <option id="Verano" value="2" selected>Mujer</option>
+                                {{/case}} 
+                                {{#case 'all'}}
+                                    <option value="all" selected>Todos</option>
+                                    <option id="Inviero" value="1" >Hombre</option>
+                                    <option id="Verano" value="2">Mujer</option>
+                                {{/case}} 
+                            {{/switch}}
+                        {{else}}
+                            <option value="all" selected>Todos</option>
+                            <option id="Inviero" value="1" >Hombre</option>
+                            <option id="Verano" value="2">Mujer</option>
+                        {{/if}}
 
-        <div class="dropdown">
-        <button class="dropbtn" onclick="orderby()">Order By
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown2">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+                    </select> 
+                </div>
+
+                <div class="order-by-filters">
+                    <div class="filter-text">
+                        <h4>Ordenar Por</h4>
+                    </div>
+                    <select name="order" id = "orderby-select" onchange="this.form.submit()">
+                        {{#if order}}
+                            {{#switch order}} 
+                                {{#case 1}}
+                                    <option id="a-z" value="1" selected>Alfabético A-Z</option>
+                                    <option id="z-a" value="2" >Alfabético Z-A</option>
+                                    <option id="low" value="3">Precio Menor</option>
+                                    <option id="high" value="4">Precio Mayor</option>
+                                {{/case}} 
+                                {{#case 2}}
+                                    <option id="a-z" value="1" >Alfabético A-Z</option>
+                                    <option id="z-a" value="2" selected>Alfabético Z-A</option>
+                                    <option id="low" value="3">Precio Menor</option>
+                                    <option id="high" value="4">Precio Mayor</option>
+                                {{/case}} 
+                                {{#case 3}}
+                                    <option id="a-z" value="1" >Alfabético A-Z</option>
+                                    <option id="z-a" value="2" >Alfabético Z-A</option>
+                                    <option id="low" value="3" selected>Precio Menor</option>
+                                    <option id="high" value="4">Precio Mayor</option>
+                                {{/case}} 
+                                {{#case 4}}
+                                    <option id="a-z" value="1" >Alfabético A-Z</option>
+                                    <option id="z-a" value="2" >Alfabético Z-A</option>
+                                    <option id="low" value="3">Precio Menor</option>
+                                    <option id="high" value="4" selected>Precio Mayor</option>
+                                {{/case}}  
+                            {{/switch}}
+                        {{else}}
+                                <option id="a-z" value="1" selected>Alfabético A-Z</option>
+                                <option id="z-a" value="2" >Alfabético Z-A</option>
+                                <option id="low" value="3">Precio Menor</option>
+                                <option id="high" value="4">Precio Mayor</option>
+                        {{/if}}                     
+                    </select> 
+                </div>
         </div>
-        </div> 
-    </div>
+    </form>
     <div class="product-div">
-        <div class="product-div-in">
-            {{#each products}}
-                    <div class="card">
-                            <a href="/shop/product/{{id_products}}" class="product-link">
-                                <img src="../../images/upload/{{image_p}}" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h3>{{name}}</h3>
-                                <p>{{price}} €</p>
-                                
-                                <h3>Tallas</h3>
-                                <button class="add-to-cart-button">Añadir</button>
-                            </div>
+        
+            <div class="product-div-in">
+                {{#each products}}
+                            <div class="card">
+                                    <a href="/shop/product/{{id_products}}" class="product-link">
+                                        <img src="../../images/upload/{{image_p}}" class="card-img-top">
+                                    </a>
+                                    <div class="card-body">
+                                        <form action="/shop/insert/{{id_products}}" method="POST">
+                                            <h3 title="{{name}}">{{name}}</h3>
+                                            <p>{{price}} €</p>
                                             
-                    </div>
-                {{else}}
-                    <div class="product-container">
-                            <p>No hay productos disponibles</p>
-                    </div>
-            {{/each}}
-        </div>
+                                            <div class="size-product">
+                                                <h4>Tallas</h4>
+                                                <input type="button" name="{{id_products}}" value="XS" class="boton-selected-{{id_products}}" id="boton-selected" onclick="cambiarboton(this)">
+                                                <input type="button" name="{{id_products}}" value="S" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                                <input type="button" name="{{id_products}}" value="M" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                                <input type="button" name="{{id_products}}" value="XL" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                                <input type="button" name="{{id_products}}" value="XXL" class="boton-no-selected-{{id_products}}" id="boton-no-selected" onclick="cambiarboton(this)">
+                                                <input type="hidden" name="size" class="size" id='size-{{id_products}}' value="XS">
+                                            </div>
+                                                <button class="add-to-cart-button">Añadir</button>
+                                        </form>
+                                    </div>                  
+                            </div>
+                    {{else}}
+                        <div class="product-container">
+                                <p>No hay productos disponibles</p>
+                        </div>
+                {{/each}}
+            </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
-@import url(navigation.css);
-@import url(footer.css);
-@import url(message.css);
+@import url(../navigation.css);
+@import url(../footer.css);
+@import url(../message.css);
 
 .product-div{
     display: flex;
@@ -113,6 +113,7 @@ p{
     width: 80%;
     object-fit: cover;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .central-image{
